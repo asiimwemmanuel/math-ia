@@ -1,0 +1,207 @@
+SECTION 1
+
+Sequences & Series
+Starting with the fundamental concept of sequences, I have chosen quadratic rather than arithmetic sequences to illustrate the core concept since they can draw conclusions about linear sequences while also predicting the behaviour of cubic sequences.
+For a quadratic sequence with the structure a,\ b,\ c where;
+\alpha=b-a\bigm\beta=c-b\bigmx=\beta- α	a\ \ \ b\ \ \ c
+\alpha\ \ \ \beta
+                                  x
+
+Difference graph 1
+\alpha and \beta in the 2nd layer collectively form a linear sequence, whose nth term is outlined as
+\alpha+\left(n-1\right)x=\alpha+\sum_{i=1}^{n-1}x
+The bottommost layer (denoted as x) – within the context of the sequence above – is a constant, thus is assigned a degree of 0. The middle layer has a degree of 1, and the topmost layer has a degree of 2. (These degrees will have more relevance later)
+A linear progression emerges as a combination of \alpha and x_i within the second layer. Finding the nth term at any given layer requires a backtracking computation of the underlying layers. 
+For example:
+2\ \ \ 5\ \ \ 10
+3\ \ 5
+2
+Difference graph 2
+To obtain the next term after 10 (degree 2), first computing the next term in the underlying sequence (degree 1) is necessary, which itself requires the next term in its underlying sequence (degree 0). Thus, the 4th term will be 10 + (5 + 2). Note that since 10 itself can be expressed in the same recursive  nature described above, all terms in the main sequence can be represented in terms of 2 (which is the first term in the sequence) and a combination of terms in lower layers.
+This pattern can be extended to other sequences and is not limited to quadratics.
+The general form of quadratic nth-term problems is:
+q(n)=a+i=1n-1α+xi-1 #1
+Thus simplifying to:
+a+\sum\alpha+x\sum{(i-1)}
+a+\alpha\left(n-1\right)+x\left(\frac{(n-1)(n-2)}{2}\right)
+a+n\alpha-\alpha+\frac{n^2x-3nx+2x}{2}
+∴qn=x2n2+α-32xn+a-α+x#1.1
+Thus, clearly showing [a, b, c] to be a quadratic sequence
+Notice how the original general form (1) has the summation term’s subject as the formula of a linear sequence. The final expression (1.1) is tailored to address linear and quadratic sequences specifically, so an alternative approach for sequences of higher degrees is necessary. Note that a formula generated for a certain degree of sequences can work for all sequences up to that degree; for example, a formula for cubics would work for cubics, quadratics and arithmetic sequences.
+As an example of cubics, consider
+a\ \ \ \ b\ \ \ \ c\ \ \ \ d
+\alpha\ \ \ \beta\ \ \ \gamma
+а  б
+א
+Difference graph 3
+And, for simplicity, assume the top 2 layers are represented by c\left(n\right),\ q\left(n\right) respectively where c\left(1\right)=a,q\left(1\right)=\alpha. Thus, consider
+c\left(1\right)=a
+c\left(2\right)=a+\alpha=a+q(1)
+c\left(3\right)=a+\alpha+\beta=a+q\left(1\right)+q(2)
+\therefore c\left(n\right)=a+\sum_{i=1}^{n-1}{q(i)}
+Inserting equation (1) i.e. the general form of quadratics\Biggm
+cn=a+i=1n-1α+j=1i-1а+ℵ(j-1)
+cn=a+ℵ2i2+а-32ℵi+α-а+ℵ
+a+\frac{\aleph}{2}\left[\frac{n(n-1)(2n-1)}{6}\right]+а-32ℵnn-12+(n-1)(α-а+ℵ)
+2nd term	3rd term	4th term
+\frac{\aleph}{2}\left[\frac{(n-1)(2n-1)}{6}\right]
+2n^3-3n^2+n\ 
+\frac{2\aleph n^3-3\aleph n^2+\aleph n}{12}
+\frac{\aleph}{6}\left(n^3\right)-\frac{\aleph}{4}\left(n^2\right)+\frac{\aleph}{12}(n)
+	а-1.5ℵnn-12
+а-1.5ℵn2+1.5ℵ-аn2
+а-1.5ℵ2n2+1.5ℵ-а2(n)
+\left(n-1\right)α-а+ℵ
+α-а+ℵn-α+а-ℵ
+
+∴cn=ℵ6n3+а-2ℵ2n2+11ℵ-9а+6α6n+a+а-α-ℵ #3
+The two expressions underwent rigorous numerical tests to ensure equivalence (Asiimwe, Math Exploration Utilities, 2024).
+Notably, the two calculated formulas q\left(n\right),c\left(n\right) rely on initial terms in each layer (see difference graph 3) i.e. a,\alpha,а,ℵ,… to compute the nth term, since all terms in a given layer can be represented as the sum of the initial term and a combination of underlying terms, thus justifying the inclusion of initial terms in previous general formulas.
+Take the example of
+1\ \ \ \ 3\ \ \ \ 8\ \ \ \ 20
+2\ \ \ 5\ \ \ 12
+3\ \ 7
+4
+Difference graph 4
+Equation (3) predicts that the cubic is modelled by
+cn=23n3-52n2+296n-2#3.1
+Hence showing that 1,3,8,20 is indeed cubic
+However, since there are theoretically an infinite number of degrees, there is no one closed form  expression for all, and since the general expressions greatly increase in complexity with each degree, a different method must be used – one that relies on patterns in how these formulas change.
+Following the recursive trend, we can say that by extension, c\left(n\right) is the subject of the summation term for quartic sequences (degree 4) in the same way that q\left(n\right) was the subject in the cubic expression.
+Consider a framework where descending through the layers resembles differentiation in calculus. Likewise, ascending through the layers resembles integration, accumulating terms to reconstruct the original sequence.
+For example, describing difference graph 2 by evaluating Equation (1.1),
+q\left(n\right)=\frac{2}{2}\left(n^2\right)+\left(3-1.5\ast2\right)n+(2-3+2)
+{q\left(n\right)=n}^2+1
+And within the new framework
+q^{\prime\prime}\left(n\right)=2
+This derivative fully describes the bottom layer of the difference graph; however, this does not imply that the 1st derivative fully describes the second layer since there is usually a constant real term error. In the above case, since q^\prime\left(n\right)=2n which predicts that q^\prime\left(1\right)=2 when the actual observed difference is 5-2=3, the error term is 1.
+While this constant error term is not easily predictable, it is certain that for a sequence s\left(n\right) of degree d, s^{\left(d\right)}\left(n\right) will always match the actual bottommost layer, as shown for this quadratic sequence. Another example uses Equation (3.1): deg\left(c\right)=3,\ \ c^{\left(3\right)}(n)=4.
+The most useful application of Calculus in sequences is determining convergence and limit behaviour. To more precisely describe layers, however, difference operators (Caimna, n.d.) are more suitable since they are discrete versions of differential operators with similar notation useful in formalizing difference diagrams and discretely approximating derivatives.
+Δfn=fn+d-fn=fi+1-fi
+\mathrm{\Delta}^2f\left(n\right)=\mathrm{\Delta}\left(\mathrm{\Delta f}\left(n\right)\right)=f\left(n+2h\right)-2f\left(n+h\right)+f\left(n\right)=f_{\left(i+2\right)}-2f_{\left(i+1\right)}+f_i
+\therefore\Delta^nf\left(n\right)=\Delta^{n-1}f\left(n+h\right)-\Delta^{n-1}f\left(n\right)
+Sequences are vital in real-world applications like calculating compound interest, modelling population growth, describing motion, determining algorithm efficiency, and analysing signals. They offer essential techniques for prediction and analysis across various fields.
+
+
+SECTION 2
+
+Lagrange Interpolation
+Lagrange interpolation, primarily used for in-bound approximation, possesses properties useful to solving nth-term problems without introducing error.
+The Lagrange interpolation formula is expressed as (Archer & Weisstein, 2024):
+P\left(x\right)=\sum_{i=0}^{n-1}{y_il_i(x)}\ |\ l_i(x)=\prod_{j=0,j\neq i}^{n-1}\frac{x-x_j}{x_i-x_j}
+	P(x) is a polynomial of degree n-1 (where n signifies the number of data points).
+	y_i represents the y-coordinate of the 𝑖𝑡ℎ data point.
+	l_i\left(x\right) represents a Lagrange basis polynomial (explained below)
+	x_i signifies the x-coordinate of the ith data point.
+Here, l_i\left(x\right) is defined with the product operator, set to evaluate to 1 at its designated point and 0 at all the rest. Formally, a Lagrange basis polynomial l_i(x) is defined to behave as follows:
+l_i\left(x\right)=1: x=i0: x ≠i
+Since each given basis polynomial only contributes to its own point, the function P\left(x\right) at x_i will behave such that it goes through y_i but is 0 at all other known points since it evaluates as defined above by the piecewise expression.
+Summing up all Lagrange polynomials over k points results in a single function of order \le k that interpolates all points.
+ 
+Expressing a Lagrange basis function algebraically uses the idea of roots and factors i.e. for y=(x-a)(x-b)(x-c ) with zeros at x\ =\ a,\ b,\ c.
+For example, consider a given basis polynomial l_1(x) where x\in{0,1,2,3} such that
+l_1\left(1\right)=1\ |\ l_1\left(0\right)=l_1\left(2\right)=l_1(3)=0
+Using the idea of roots, l_1\left(x\right) may be defined as \left(x-0\right)\left(x-2\right)\left(x-3\right). This expression has the appropriate zeros (shown when x\neq1) but does not equate to 1 at l_1(1). Instead, it evaluates to (1-0)(1-2)(1-3)=2.
+However, if we add to the definition of l_1\left(x\right) such that it may be
+l_1\left(x\right)=\frac{\left(x-0\right)\left(x-2\right)\left(x-3\right)}{\left(1-0\right)\left(1-2\right)\left(1-3\right)}\bigmThen we have a complete basis polynomial that behaves as originally defined, because the numerator evaluates to 0 for all x\ \neq1 and evaluates to 1 for l_1(1), due to the denominator (Wood, 2021).
+Generally, for a set of points x_i\ |\ \ i\ \in{\ 0,1,\cdots,n-1} there are n basis polynomials l_i(x).
+The original product notation for l_i\left(x\right) illustrates the general case of the above mechanism. It shows that for a given point x_i, its corresponding basis polynomial is defined to have roots at all x_j\ |\ j\in{0,\ 1,\ \cdots,\ n-1}\ |\ j\ \neq\ i (ensured by the numerator) and is also defined to equal 1 at the appropriate single point (ensured by the denominator) .
+To further illustrate the formula for n points ,
+P\left(x_i\right)=y_0l_0\left(x_i\right)+y_1l_1\left(x_i\right)+\ldots+y_il_i\left(x_i\right)+\ldots+y_nl_n\left(x_i\right)=0+0+\ldots+y_i+\ldots+\ 0
+Thus, showing that the full polynomial equals y_i for all respective data points.
+Interestingly, the formula produces the function of the lowest degree that still interpolates all given data points. We can show this for points (1,1), (2,8), (3,27), (4,64), (5,125), (6,216 ). Since the highest degree producible for n points by the formula is (n-1) (Wood, 2021), the most complex output for this specific dataset is a quintic function (degree 5).
+ 
+Thus, the function interpolating all points is simply f\left(x\right)=x^3
+However, using only the first 4 points we can still arrive at the same function:
+ 
+Therefore, all data points past (4,64) are redundant and don’t add new information. We can see this more clearly when observing the basis polynomials:
+i	L_i\left(x\right)
+0	L_0\left(x\right)=\frac{\left(x-2\right)\left(x-3\right)\left(x-4\right)\left(x-5\right)\left(x-6\right)}{(1-2)(1-3)(1-4)(1-5)(1-6)}=-\frac{1}{120}\left(x-2\right)\left(x-3\right)\left(x-4\right)\left(x-5\right)\left(x-6\right)
+1	L_1\left(x\right)=\frac{\left(x-1\right)\left(x-3\right)\left(x-4\right)\left(x-5\right)\left(x-6\right)}{(2-1)(2-3)(2-4)(2-5)(2-6)}=\frac{1}{24}\left(x-1\right)\left(x-3\right)\left(x-4\right)\left(x-5\right)\left(x-6\right)
+2	L_2\left(x\right)=\frac{\left(x-1\right)\left(x-2\right)\left(x-4\right)\left(x-5\right)\left(x-6\right)}{(3-1)(3-2)(3-4)(3-5)(3-6)}=-\frac{1}{12}\left(x-1\right)\left(x-2\right)\left(x-4\right)\left(x-5\right)\left(x-6\right)\ \ 
+3	L_3\left(x\right)=\frac{\left(x-1\right)\left(x-2\right)\left(x-3\right)\left(x-5\right)\left(x-6\right)}{(4-1)(4-2)(4-3)(4-5)(4-6)}=\frac{1}{12}\left(x-1\right)\left(x-2\right)\left(x-3\right)\left(x-5\right)\left(x-6\right)\ \ 
+4	L_4\left(x\right)=\frac{\left(x-1\right)\left(x-2\right)\left(x-3\right)\left(x-4\right)\left(x-6\right)}{(5-1)(5-2)(5-3)(5-4)(5-6)}=-\frac{1}{24}\left(x-1\right)\left(x-2\right)\left(x-3\right)\left(x-4\right)\left(x-6\right)
+5	L_5\left(x\right)=\frac{\left(x-1\right)\left(x-2\right)\left(x-3\right)\left(x-4\right)\left(x-5\right)}{(6-1)(6-2)(6-3)(6-4)(6-5)}=\frac{1}{120}\left(x-1\right)\left(x-2\right)\left(x-3\right)\left(x-4\right)\left(x-5\right)
+The coefficients of L_3\left(x\right)\ldots L_5\left(x\right) are the additive inverses  of those in L_0\left(x\right)\ldots L_2\left(x\right), adding no new information to the final polynomial. To describe a trend in perfect  evenly spaced data of degree n, exactly n+1 data points are needed, as more would yield redundant basis polynomials, while fewer would be insufficient. To prove that Lagrange interpolation always gives a satisfactory polynomial of minimum degree, consider the following proof by contradiction.
+Statement: The Lagrange interpolation formula produces the unique polynomial of the lowest possible degree that interpolates a given set of n distinct data points.
+	Assume two distinct polynomials f\left(x\right) and g\left(x\right) that both interpolate the same n distinct data points. Let their degrees be m and k respectively, with m,\ k\ \le n-1.
+	Define h(x)=f(x)-g(x).
+	h\left(x_i\right)=f\left(x_i\right)-g\left(x_i\right)=y_i-y_i=0\ |\ i=0,\ 1,\ldots,\ n-1.
+	If f(x) and g(x) have degrees m and k respectively, then the degree of h(x) is at most max{\left(m,k\right)}\ \le\ n-1 i.e. the greater of the two.
+	Since a polynomial of degree d cannot have more than d distinct roots unless it is the zero polynomial , and since h(x) has n zeros x0,x1,…,xn-1, while having a degree of at most n-1, the polynomial h(x) must be identically zero .
+	h(x)=0\Longrightarrow f(x)-g(x)=0\Longrightarrow f(x)=g(x)
+	Since f(x) and g(x) must be identical, step 1 is contradicted.
+Therefore, the Lagrange interpolation formula produces the unique polynomial of the lowest possible degree that interpolates the given data points.                                                  Q.E.D
+Using difference operators, we streamline the process and reduce computation time. The forward difference operator \Delta recursively calculates polynomial coefficients by finding successive differences: \Delta y_i=y_{i+1}-y_i. Higher-order differences, like \Delta^2y_i, build on these. Newton's forward difference formula (Abramowitz & Stegun, 1972) applies this approach:
+P\left(x\right)=y_0+\frac{\left(x-x_0\right)}{1!}\Delta y_0+\frac{\left(x-x_0\right)\left(x-x_1\right)}{2!}\Delta^2y_0+\cdots+\frac{\left(x-x_0\right)\left(x-x_1\right)\cdots\left(x-x_{n-1}\right)}{n!}\Delta^ny_0
+By precomputing differences and using their recursive structure, interpolation becomes efficient: Lagrange handles any dataset, while Newton’s method is optimal for evenly spaced data.
+The case-by-case closed form formulae for sequences as well as the discussed Lagrange & Newton interpolation techniques are the most optimal for extrapolation when given perfect data points i.e. when there is no noise, and the dataset is guaranteed to have all information for a defined trend. However, for cases where data points are noisy and/or imperfect, a new strategy must be adopted.
+
+SECTION 3
+
+Polynomial Regression
+Polynomial regression serves as a transition from discrete to continuous data, suitable for real-world data analytics scenarios characterized by inherent error. It offers a balance between accuracy and versatility across diverse applications.
+Assuming two samples, x\ =\ 1 and x\ =\ 2, are taken from the same data source with equal weights in a controlled environment, the best estimate of the target variable is the mean 1.5. With additional samples, a more accurate estimate could be obtained. In this basic scenario with no input variables, the best estimate is the mean, reflecting the Null Hypothesis H_0 which assumes no correlation between any two independent-dependent variable pairs.
+In linear regression, it is assumed that the variables share a linear correlation of the basic form
+y=\beta_0+\beta_1x+\ \varepsilon
+Which may also be written in matrix form:
+y0y1⋮yn=1x01x1⋮⋮1xnβ0β1+ε0ε1⋮εn#4
+Therefore, the goal of the regression algorithm is to find the coefficients that minimize the residual sum of squares  which is calculated as follows (Archdeacon, 1994):
+RSS=\sum_{i=1}^{n}\left(y_i-{\hat{y}}_i\right)^2=\sum_{i=1}^{n}\left(y_i-\left(\beta_0+\beta_1x_i\right)\right)^2
+RSS may be summarized as calculating the sums of the squares of the differences between actual and predicted values. This optimization problem may be solved via a system of partial derivatives of RSS with respect to each variable in the coefficient vector \vec{\beta} (see Equation 4).
+∂RSS∂β0=∂∂β0i=1nyi-β0-β1xi2=-2i=1nyi-β0-β1xi=0#4.1
+\sum_{i=1}^{n}\left(y_i-\beta_0-\beta_1x_i\right)=0
+β0n+β1i=1nxi=i=1nyi#5
+\frac{\partial RSS}{\partial\beta_1}=\frac{\partial}{\partial\beta_1}\sum_{i=1}^{n}\left(y_i-\beta_0-\beta_1x_i\right)^2=-2\sum_{i=1}^{n}{\left(y_i-\beta_0-\beta_1x_i\right)x_i}=0\ 
+\sum_{i=1}^{n}{\left(y_i-\beta_0-\beta_1x_i\right)x_i}=0
+β0i=1nxi+β1i=1nxi2=i=1nyixi#6
+S_x=\sum_{i=1}^{n}x_i\ |\ S_y=\sum_{i=1}^{n}y_i|\ S_{yy}=\sum_{i=1}^{n}y_i^2\ |{\ S}_{xx}=\sum_{i=1}^{n}x_i^2\ |\ S_{xy}=\sum_{i=1}^{n}{y_ix}_i
+β0n+β1Sx=Sy#5.1
+β0Sx+β1Sxx=Sxy#6.1
+Solving the system ;
+β0=1nSy-β1Sx#5.2
+SxSyn-β1SxSxn+β1Sxx=Sxy#6.2
+\beta_1\left(S_{xx}-\frac{S_x^2}{n}\right)=S_{xy}-\frac{S_xS_y}{n}
+\beta_1=\left(\frac{nS_{xy}-S_xS_y}{n}\right)\bullet\left(\frac{n}{nS_{xx}-S_x^2}\right)
+\beta_1=\frac{nS_{xy}-S_yS_x}{nS_{xx}-S_x^2}=\frac{n\sum{x_iy_i}-\left(\sum x_i\right)\left(\sum y_i\right)}{n\sum x_i^2-\left(\sum x_i\right)^2}
+β0=1nSy-β1Sx=Sxx-SxSxynSxx-Sx2=xi2-xixiyinx2-x2#5.3
+Solving the normal equations (5.1, 6.1) (see background information) for higher-order polynomials is complex, so matrix notation is useful as it simplifies the process and helps find the general solution without having to solve a complex system of partial derivatives.
+In the context of a set comprising 𝑛 data points (𝑥, 𝑓(𝑥)), the polynomial function of degree 𝑚 that best fits the data is defined as (Heiberger & Neuwirth, 2009):
+f\left(x_i\right)=\beta_0+\beta_1x_i+\beta_2x_i^2+\cdots+\beta_mx_i^m+\varepsilon_i\emsp\mathrm{(for\ }i=1,2,\ldots,n\mathrm{)}
+Where m is the chosen maximum power, each \beta_i is a coefficient within the function, and \varepsilon_i represents random error.
+The approximation is determined by solving for \vec{\beta} in the matrix equation (Seber & Lee, 2012)
+Xβ+ε=y#6
+1x0x02⋯x0m1x1x12⋯x1m⋮⋮⋮⋱⋮1xnxn2⋯xnm.β0β1β2⋮βm+ε0ε1ε2⋮εm=y0y1y2⋮ym#7
+To minimize the cost function (RSS, also referred to as J), the best approach is linear-algebraic. Some concepts within linear algebra must first be established.
+	If matrix A of dimensions m by n is multiplied with B of dimensions f by g, the result will have dimensions m by g where the form of dimensions is rows by columns.
+	The transpose operation flips the axes of a matrix i.e. flips the matrix along its diagonal (changes dimensions from m by n to n by m) (Nykamp, 2011):
+\left[\begin{matrix}1&3&5\\2&4&6\\\end{matrix}\right]^T=\left[\begin{matrix}1&2\\3&4\\5&6\\\end{matrix}\right]
+	Note the following identities of the transpose operation (lowercase denotes vectors)
+\left(A^T\right)^T=A
+\left(A+B\right)^T=A^T+B^T
+\left(AB\right)^T=B^TA^T\neq A^TB^T
+a^Tb=b^Ta
+Now the residual vector is given by (see Equation 4)
+\vec{\varepsilon}=\vec{y}-X\vec{\beta}
+We want to minimize the cost function (equivalent to RSS) below:
+J\left(\vec{\beta}\right)=\sum_{i}\varepsilon_i^2=\left[\begin{matrix}\varepsilon_0&\varepsilon_1&\cdots&\varepsilon_n\\\end{matrix}\right]\left[\begin{matrix}\varepsilon_0\\\varepsilon_1\\\vdots\\\varepsilon_n\\\end{matrix}\right]=\varepsilon^T\varepsilon
+J\left(\beta\right)=\left(y-X\beta\right)^T\left(y-X\beta\right)=y^Ty-y^TX\beta-\beta^TX^Ty+\beta^TX^TX\beta 
+Since y^TX\beta and \beta^TX^Ty are scalars (see notes on matrix multiplication above) and are equal (since they share the same terms), they can be combined.
+J\left(\beta\right)=y^Ty-2yX^T\beta^T+X^TX\beta^T\beta
+The gradient (derivative) of the cost function with respect to β is
+\mathrm{\nabla}_\beta J\left(\beta\right)=0-2X^Ty+2X^TX\beta=-2X^T\left(y-X\beta\right)=0
+Solving for β (the general form of the Normal Equation)
+β=\left(X^TX\right)^{-1}XTy=X+y#8
+Key Terms	Dimensions of the matrices:
+- \widehat{\vec{\beta}} is the estimated coefficient vector.
+- \vec{y} is the vector of target values.
+- X is the feature matrix (also called the design matrix).
+- \left(X^TX\right)is the covariance matrix
+- X^+ is the Moore-Penrose inverse	- X is (n+1) by (m+1),
+- \widehat{\vec{\beta}} is (m+1) by 1,
+- \vec{y} is (n+1) by 1.
+
+The Normal Equation (8) interestingly also works for simple linear regression which could be seen as the base case of polynomial regression. It provides a direct, exact solution but is computationally slow for large datasets. Gradient descent (Boyd & Vanderberghe, 2004), while iterative and slower for small datasets, scales better to large datasets and is more versatile in handling diverse learning scenarios. Both methods aim to find the optimal coefficients that minimize the error function. Note that the general matrix equation (7) for polynomial regression is very similar to that of feed forward neural networks (Nielson, 2015):
+a^{\left(n\right)}=\sigma(Wa^{\left(n-1\right)}+b)
+Where W is the weight/feature matrix (equivalent to the design matrix), a^{\left(n-1\right)} is the coefficient vector equivalent and b is the error vector equivalent.
+In fact, regression problems are often seen as a classical application of neural networks. The two topics share multiple concepts including cost function optimization through weight adjustment & gradient descent.
